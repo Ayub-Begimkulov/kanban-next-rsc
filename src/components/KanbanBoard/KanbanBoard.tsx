@@ -1,4 +1,5 @@
 import { Task, TaskStatus, getTasks } from "@/server-actions/tasks";
+import { KanbanColumnSortable } from "../KanbanColumn/KanbanColumn";
 
 const styles = {
   wrapper: {
@@ -62,16 +63,12 @@ export async function KanbanBoard() {
   return (
     <div style={styles.wrapper}>
       {columns.map((column) => {
-        const tasksForColumn = statusToTasksMap[column.status];
+        const tasksForColumn = statusToTasksMap[column.status] || [];
         return (
           <div key={column.status} style={styles.column}>
             <h3>{column.title}</h3>
             <div style={styles.columnInner}>
-              {tasksForColumn?.map((task) => (
-                <div key={task.id} style={styles.card}>
-                  {task.title}
-                </div>
-              ))}
+              <KanbanColumnSortable tasks={tasksForColumn} />
             </div>
           </div>
         );

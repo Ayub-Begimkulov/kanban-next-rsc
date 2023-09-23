@@ -2,6 +2,13 @@ import { Suspense } from "react";
 import { AddTask } from "@/components/AddTask";
 import { KanbanBoard } from "@/components/KanbanBoard";
 
+/* 
+- сортировка задач
+- перенос задач по колонкам
+- редактирование задач
+- проработать лоудеры и ошибки
+*/
+
 export default function Home() {
   return (
     <div style={{ height: "100%", display: "flex", flexDirection: "column" }}>
