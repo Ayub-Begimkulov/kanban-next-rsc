@@ -22,6 +22,7 @@ export default function Home() {
         }}
       >
         <div>Kanban board</div>
+
         <AddTask>
           <button>Add Task</button>
         </AddTask>

@@ -1,25 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import {
-  DndContext,
-  DragEndEvent,
-  KeyboardSensor,
-  PointerSensor,
-  closestCenter,
-  useSensor,
-  useSensors,
-} from "@dnd-kit/core";
+
 import {
   SortableContext,
-  arrayMove,
-  sortableKeyboardCoordinates,
   useSortable,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-import { Task, reorderTask } from "@/server-actions/tasks";
+import { Task } from "@/server-actions/tasks";
 
 const styles = {
   card: {
