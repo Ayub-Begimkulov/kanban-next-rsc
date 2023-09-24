@@ -40,45 +40,13 @@ export const KanbanColumnSortable = ({
 }: KanbanColumnSortableProps) => {
   const [tasks, setTasks] = useState(initialTasks);
 
-  const sensors = useSensors(
-    useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    })
-  );
-
-  const handleDragEnd = ({ active, over }: DragEndEvent) => {
-    console.log(active, over);
-    // TODO do we need this if statement
-    if (!over) {
-      return;
-    }
-    reorderTask(String(active.id), { beforeId: String(over.id) });
-    if (active.id !== over?.id) {
-      setTasks((items) => {
-        const oldIndex = items.findIndex((item) => item.id === active.id);
-        const newIndex = items.findIndex((item) => item.id === over?.id);
-
-        return arrayMove(items, oldIndex, newIndex);
-      });
-    }
-  };
-
   return (
     <div>
-      <DndContext
-        sensors={sensors}
-        collisionDetection={closestCenter}
-        onDragEnd={handleDragEnd}
-      >
-        <SortableContext items={tasks} strategy={verticalListSortingStrategy}>
-          {tasks.map((task) => {
-            return (
-              <SortableItem id={task.id} title={task.title} key={task.id} />
-            );
-          })}
-        </SortableContext>
-      </DndContext>
+      <SortableContext items={tasks} strategy={verticalListSortingStrategy}>
+        {tasks.map((task) => {
+          return <SortableItem id={task.id} title={task.title} key={task.id} />;
+        })}
+      </SortableContext>
     </div>
   );
 };

@@ -3,8 +3,8 @@ import { AddTask } from "@/components/AddTask";
 import { KanbanBoard } from "@/components/KanbanBoard";
 
 /* 
-- сортировка задач
 - перенос задач по колонкам
+- проверим добавление задачи
 - редактирование задач
 - проработать лоудеры и ошибки
 */
